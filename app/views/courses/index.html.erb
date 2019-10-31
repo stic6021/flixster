@@ -4,12 +4,14 @@
   <br />
   <div class="row">
     <% @courses.each do |c| %>
-      <h2 class="text-center"><%= c.title %></h2>
+      <h2 class="text-center">
+        <%= link_to c.title, course_path(c) %>
+      </h2>
       <div class="col-sm-8 col-12">
         <%= c.description %>
       </div>
       <div class="col-sm-4 col-12 text-center">
-        <%= link_to 'Button', '#', class: 'btn btn-primary btn-large' %>
+        <%= link_to 'Details', course_path(c), class: 'btn btn-primary btn-large' %>
       </div>
       <br class="clr" />
     <% end %>

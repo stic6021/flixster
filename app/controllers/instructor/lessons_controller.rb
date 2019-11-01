@@ -31,6 +31,6 @@ class Instructor::LessonsController < ApplicationController
   end
 
   def require_authorized_user
-    return render_eperm unless current_section.course.user == current_user
+    render_eperm unless current_section.course.user == current_user
   end
 end

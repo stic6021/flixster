@@ -6,19 +6,22 @@
     <% @courses.each do |c| %>
       <div class="booyah-box col-10 offset-1">
         <div class="row">
-          <h4 class="col-10">
+          <h5 class="col-10">
             <%= link_to c.title, course_path(c) %>
-          </h4  >
+          </h5  >
         </div>
-        <br />
+
+        <% if c.image && c.image.file %>
+          <%= image_tag(c.image.url, class: 'img-fluid') %>
+        <% end %>
+
         <div class="col-sm-8 col-12">
           <%= c.description %>
         </div>
         <br />
         <div class="text-right right-offset-1">
-          <%= link_to 'Details', course_path(c), class: 'btn btn-primary btn-large' %>
+          <%= link_to 'Details', course_path(c), class: 'btn btn-primary' %>
         </div>
-        <br class="clr" />
       </div>
     <% end %>
   </div>

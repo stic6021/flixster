@@ -11,13 +11,23 @@
         <%= number_to_currency(@course.cost) %>
       </span>
 
-      <% if true || current_user && current_user == @course.user %>
+      <% if current_user && current_user == @course.user %>
         <br />
         <br />
         <%= link_to 'Administer', instructor_course_path(@course), class: 'btn btn-danger btn-large' %>
         <br />
         <br />
       <% end %>
+
+      <br />
+      <br />
+      <% if current_user && current_user.enrolled_in?(@course) %>
+        <h3 class='badge badge-info'>You are enrolled</h3>
+      <% else %>
+        <%= link_to 'Enroll', course_enrollments_path(@course), class: 'btn btn-primary', method: :post %>
+      <% end %>
+      <br />
+      <br />
     </div>
   </div>
   <div class="col-sm-8 col-12">

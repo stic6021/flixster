@@ -1,3 +1,18 @@
+<script>
+  $(function() {
+    $('.lessons').sortable({
+      update: function(event, ui) {
+        $.ajax({
+          type: 'PUT',
+          url: ui.item.data('update-url'),
+          dataType: 'json',
+          data: { lesson: { row_order_position: ui.item.index() }}
+        });
+      }
+    });
+  });
+</script>
+
 <br />
 <div class="booyah-box col-10 offset-1">
   <h1 class="text-center"><%= current_course.title %></h1>
@@ -16,9 +31,9 @@
       <li>
         <%= s.title %>
         <%= link_to 'New lesson', new_instructor_section_lesson_path(s), class: 'float-right btn btn-primary btn-sm' %>
-        <ul>
+        <ul class="lessons">
           <% s.lessons.rank(:row_order).each do |l| %>
-            <li>
+            <li data-update-url=<%= instructor_lesson_path(l) %>>
               <b><%= l.title %></b>
               -
               <%= l.subtitle %>
@@ -30,7 +45,3 @@
     <% end %>
   </ul>
 </div>
-
-<script>
-  alert('Hello from JavaScript in instructor/courses/show.html.erb');
-</script>

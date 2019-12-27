@@ -50,7 +50,7 @@
   </div>
 
   <div class="col-12">
-    <% @course.sections.each do |s| %>
+    <% @course.sections.rank(:row_order).each do |s| %>
       <br /><br />
       <div class="section">
         <h3><%= s.title %></h3>

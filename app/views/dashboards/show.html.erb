@@ -1,0 +1,47 @@
+<br />
+
+<div class="booyah-box col-10 offset-1">
+  <h1>What I'm Learning</h1>
+  <% current_user.enrolled_courses.each do |c| %>
+    <h3 class="text-center">
+      <%= link_to c.title, course_path(c) %>
+    </h3>
+    <br />
+    <% if c.image && c.image.file %>
+      <%= image_tag c.image.url, class: 'img-fluid' %>
+      <br />
+    <% end %>
+    <div class="row">
+      <div class="col-12 col-sm-8">
+        <%= c.description %>
+      </div>
+      <div class="col-12 col-sm-4 text-center">
+        <%= link_to "More info...", course_path(c), class: 'btn btn-large btn-primary' %>
+      </div>
+    </div>
+    <hr class="col-8 offset-2" color="black">
+    <br class="clr" />
+  <% end %>
+
+  <h1>What I'm Teaching</h1>
+  <% current_user.courses.each do |c| %>
+    <h3 class="text-center">
+      <%= link_to c.title, course_path(c) %>
+    </h3>
+    <br />
+    <% if c.image && c.image.file %>
+      <%= image_tag c.image.url, class: 'img-fluid' %>
+      <br />
+    <% end %>
+    <div class="row">
+      <div class="col-12 col-sm-8">
+        <%= c.description %>
+      </div>
+      <div class="col-12 col-sm-4 text-center">
+        <%= link_to "More info...", course_path(c), class: 'btn btn-large btn-primary' %>
+      </div>
+    </div>
+    <hr class="col-8 offset-2" color="black">
+    <br class="clr" />
+  <% end %>
+</div>

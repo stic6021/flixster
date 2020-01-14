@@ -1,6 +1,6 @@
 class Instructor::SectionsController < ApplicationController
   before_action :authenticate_user!
-  before_action :require_authorized_user, only: [:new, :create]
+  before_action :require_authorized_user, only: [:create]
   before_action :require_authorized_for_current_section, only: [:update]
   skip_before_action :verify_authenticity_token, only: [:update]
 
@@ -11,10 +11,6 @@ class Instructor::SectionsController < ApplicationController
     else
       render :new, :unprocessable_entity
     end
-  end
-
-  def new
-    @section = Section.new
   end
 
   def update

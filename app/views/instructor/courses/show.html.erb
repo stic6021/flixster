@@ -39,6 +39,11 @@
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newSection">
     New Section
   </button>
+
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newLesson">
+    New Lesson (modal)
+  </button>
   
   <ul class="sections">
     <% current_course.sections.rank(:row_order).each do |s| %>

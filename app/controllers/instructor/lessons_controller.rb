@@ -1,6 +1,6 @@
 class Instructor::LessonsController < ApplicationController
   before_action :authenticate_user!
-  before_action :require_authorized_user, only: [:new, :create]
+  before_action :require_authorized_user, only: [:create]
   before_action :require_authorized_for_current_lesson, only: [:update]
   skip_before_action :verify_authenticity_token, only: [:update]
 
@@ -11,10 +11,6 @@ class Instructor::LessonsController < ApplicationController
     else
       render :new, :unprocessable_entity
     end
-  end
-
-  def new
-    @lesson = Lesson.new
   end
 
   def update
